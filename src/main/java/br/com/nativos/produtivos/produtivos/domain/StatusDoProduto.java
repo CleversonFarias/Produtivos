@@ -1,4 +1,4 @@
-package br.com.nativos.produtivos.produto.domain;
+package br.com.nativos.produtivos.produtivos.domain;
 
 public enum StatusDoProduto {
     DISPONIVEL,ESGOTADO
