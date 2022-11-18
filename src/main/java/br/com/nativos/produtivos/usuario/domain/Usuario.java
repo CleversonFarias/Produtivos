@@ -1,7 +1,9 @@
 package br.com.nativos.produtivos.usuario.domain;
 
+import br.com.nativos.produtivos.usuario.aplication.api.UsuarioNovoRequest;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -13,6 +15,7 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
 @Document(collection = "Usuario")
 public class Usuario {
     @Id
@@ -21,5 +24,9 @@ public class Usuario {
     @Email
     @Indexed
     private String email;
+
+    public Usuario(UsuarioNovoRequest usuarioNovo) {
+        this.email = usuarioNovo.getEmail();
+    }
 }
            
