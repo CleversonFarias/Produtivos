@@ -1,31 +1,32 @@
 package br.com.nativos.produtivos.usuario.domain;
 
 import br.com.nativos.produtivos.usuario.aplication.api.UsuarioNovoRequest;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.Document;
+import lombok.*;
 
+import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.util.UUID;
 
 @Builder
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor
 @Getter
-@Document(collection = "Usuario")
+@Entity
 public class Usuario {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id",updatable = false, unique = true, nullable = false)
     private UUID idUsuario;
+    @NotBlank
     private String nome;
+    @NotBlank
     @Email
-    @Indexed
     private String email;
 
-    public Usuario(UsuarioNovoRequest usuarioNovo) {
+    public Usuario(@Valid UsuarioNovoRequest usuarioNovo) {
+        this.nome = usuarioNovo.getNome();
         this.email = usuarioNovo.getEmail();
     }
 }
