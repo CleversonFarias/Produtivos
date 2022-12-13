@@ -1,18 +1,18 @@
-package br.com.nativos.produtivos.produto.domain;
+package br.com.nativos.produtivos.produtivos.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "Produto")
+@Entity
 public class Produto {
     @Id
     private UUID idProduto;
