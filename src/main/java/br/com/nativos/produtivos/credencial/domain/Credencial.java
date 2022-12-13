@@ -2,15 +2,15 @@ package br.com.nativos.produtivos.credencial.domain;
 
 import lombok.Builder;
 import lombok.Getter;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.FieldType;
-import org.springframework.data.mongodb.core.mapping.MongoId;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 @Builder
-@Document(collation = "Credencial")
+@Entity
 public class Credencial {
-    @MongoId(targetType = FieldType.STRING)
+    @Id
     @Getter
     private String usuario;
     private String senha;
