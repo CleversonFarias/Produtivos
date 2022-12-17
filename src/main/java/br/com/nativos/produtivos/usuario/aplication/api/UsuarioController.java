@@ -22,6 +22,14 @@ public class UsuarioController implements UsuarioAPI {
     }
 
     @Override
+    public UsuarioCriadoResponse buscaUsuarioPorId(UUID idUsuario) {
+        log.info("[inicio] UsuarioController - buscaUsuarioPorId");
+        UsuarioCriadoResponse usuario = usuarioService.buscaUsuarioPorId(idUsuario);
+        log.info("[final] UsuarioController - buscaUsuarioPorId");
+        return usuario;
+    }
+
+    @Override
     public void deletaUsuarioPeloID(UUID idUsuario) {
         log.info("[inicio] UsuarioController - deletaUsuarioPeloID");
         usuarioService.deletaUsuarioUsandoId(idUsuario);
