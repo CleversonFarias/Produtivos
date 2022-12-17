@@ -13,7 +13,11 @@ public interface UsuarioAPI {
     @ResponseStatus(code = HttpStatus.CREATED)
     UsuarioCriadoResponse criaNovoUsuario(@Valid @RequestBody UsuarioNovoRequest usuarioNovo);
 
-    @DeleteMapping (value = "/{idUsuario}")
+    @GetMapping(value = "/{idUsuario}")
+    @ResponseStatus(code = HttpStatus.ACCEPTED)
+    UsuarioCriadoResponse buscaUsuarioPorId (@PathVariable UUID idUsuario);
+
+    @DeleteMapping(value = "/{idUsuario}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void deletaUsuarioPeloID(@PathVariable UUID idUsuario);
 
