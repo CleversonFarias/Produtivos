@@ -26,10 +26,17 @@ public class UsuarioAplicationService implements UsuarioService {
     }
 
     @Override
+    public UsuarioCriadoResponse buscaUsuarioPorId(UUID idUsuario) {
+        log.info("[inicia] UsuarioServicee - deletaUsuarioUsandoId");
+        UsuarioCriadoResponse buscaUsuario = usuarioRepository.buscaUsuarioPorId(idUsuario);
+        log.info("[finaliza] UsuarioService - deletaUsuarioUsandoId");
+        return buscaUsuario;
+    }
+
+    @Override
     public void deletaUsuarioUsandoId(UUID idUsuario) {
-        log.info("[inicia] UsuarioServicee - criaNovoUsuario");
-
-        log.info("[finaliza] UsuarioService - criaNovoUsuario");
-
+        log.info("[inicia] UsuarioServicee - deletaUsuarioUsandoId");
+        usuarioRepository.deleta(idUsuario);
+        log.info("[finaliza] UsuarioService - deletaUsuarioUsandoId");
     }
 }
