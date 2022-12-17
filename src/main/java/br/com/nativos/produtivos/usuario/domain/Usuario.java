@@ -2,6 +2,7 @@ package br.com.nativos.produtivos.usuario.domain;
 
 import br.com.nativos.produtivos.usuario.aplication.api.UsuarioNovoRequest;
 import lombok.*;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import javax.validation.Valid;
@@ -18,6 +19,7 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id",updatable = false, unique = true, nullable = false)
+    @Type(type= "uuid-char")
     private UUID idUsuario;
     @NotBlank
     private String nome;
