@@ -8,4 +8,5 @@ import java.util.UUID;
 public interface UsuarioService {
     UsuarioCriadoResponse criaNovoUsuario(UsuarioNovoRequest usuarioNovo);
     void deletaUsuarioUsandoId(UUID idUsuario);
+    UsuarioCriadoResponse buscaUsuarioPorId(UUID idUsuario);
 }
