@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -22,11 +23,19 @@ public class UsuarioController implements UsuarioAPI {
     }
 
     @Override
-    public UsuarioCriadoResponse buscaUsuarioPorId(UUID idUsuario) {
+    public UsuarioCriadoDetalhado buscaUsuarioPorId(UUID idUsuario) {
         log.info("[inicio] UsuarioController - buscaUsuarioPorId");
-        UsuarioCriadoResponse usuario = usuarioService.buscaUsuarioPorId(idUsuario);
+        UsuarioCriadoDetalhado usuario = usuarioService.buscaUsuarioPorId(idUsuario);
         log.info("[final] UsuarioController - buscaUsuarioPorId");
         return usuario;
+    }
+
+    @Override
+    public List<UsuarioListResponse> listaTodosUsuarios() {
+        log.info("[inicio] UsuarioController - listaTodosUsuarios");
+        List<UsuarioListResponse> listaUsuarios = usuarioService.buscaTodosUsuarios();
+        log.info("[final] UsuarioController - listaTodosUsuarios");
+        return listaUsuarios;
     }
 
     @Override
@@ -34,6 +43,11 @@ public class UsuarioController implements UsuarioAPI {
         log.info("[inicio] UsuarioController - deletaUsuarioPeloID");
         usuarioService.deletaUsuarioUsandoId(idUsuario);
         log.info("[final] UsuarioController - deletaUsuarioPeloID");
-
+    }
+    @Override
+    public void alteraUsuario(UUID idUsuario, UsuarioAlteracaoRequest usuarioAlteracaoRequest) {
+        log.info("[inicio] UsuarioController - deletaUsuarioPeloID");
+        usuarioService.alteraUsuarioPeloId(idUsuario,usuarioAlteracaoRequest);
+        log.info("[final] UsuarioController - deletaUsuarioPeloID");
     }
 }
