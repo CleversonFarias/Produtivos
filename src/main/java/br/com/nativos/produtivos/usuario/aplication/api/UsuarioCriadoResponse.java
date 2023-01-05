@@ -4,13 +4,10 @@ import lombok.Builder;
 import lombok.Value;
 
 import java.util.UUID;
-@Builder
+
 @Value
+@Builder
 public class UsuarioCriadoResponse {
     private UUID idUsuario;
-
-//    public UsuarioCriadoResponse(Usuario usuario) {
-//        this.idUsuario = usuario.getIdUsuario();
-//        this.email = usuario.getEmail();
-//    }
+    private  String nome;
 }
