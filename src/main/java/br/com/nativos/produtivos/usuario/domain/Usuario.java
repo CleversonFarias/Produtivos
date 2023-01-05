@@ -1,5 +1,6 @@
 package br.com.nativos.produtivos.usuario.domain;
 
+import br.com.nativos.produtivos.usuario.aplication.api.UsuarioAlteracaoRequest;
 import br.com.nativos.produtivos.usuario.aplication.api.UsuarioNovoRequest;
 import lombok.*;
 import org.hibernate.annotations.Type;
@@ -30,6 +31,10 @@ public class Usuario {
     public Usuario(@Valid UsuarioNovoRequest usuarioNovo) {
         this.nome = usuarioNovo.getNome();
         this.email = usuarioNovo.getEmail();
+    }
+
+    public void alteraUsuarioPeloId(UsuarioAlteracaoRequest usuarioAlteracaoRequest) {
+        this.nome = usuarioAlteracaoRequest.getNome();
     }
 }
            
