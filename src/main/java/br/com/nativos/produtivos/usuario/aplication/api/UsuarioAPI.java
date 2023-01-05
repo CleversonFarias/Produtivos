@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -15,11 +16,17 @@ public interface UsuarioAPI {
 
     @GetMapping(value = "/{idUsuario}")
     @ResponseStatus(code = HttpStatus.ACCEPTED)
-    UsuarioCriadoResponse buscaUsuarioPorId (@PathVariable UUID idUsuario);
+    UsuarioCriadoDetalhado buscaUsuarioPorId (@PathVariable UUID idUsuario);
+
+    @GetMapping
+    @ResponseStatus(code = HttpStatus.ACCEPTED)
+    List<UsuarioListResponse> listaTodosUsuarios();
 
     @DeleteMapping(value = "/{idUsuario}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void deletaUsuarioPeloID(@PathVariable UUID idUsuario);
 
-//    List<UsuarioCriadoResponse> listaTodosUsuarios(@Valid @RequestBody UsuarioNovoRequest usuarioNovo);
+    @PatchMapping(value = "/{idUsuario}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT )
+    void alteraUsuario (@PathVariable UUID idUsuario, @Valid @RequestBody UsuarioAlteracaoRequest usuarioAlteracaoRequest);
 }
